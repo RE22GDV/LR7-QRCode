@@ -1,0 +1,15 @@
+{
+  "kata": "https://www.codewars.com/kata/5ef9c85dc41b4e000f9a645f",
+  "date": "2026-10-04",
+  "note": "Підсумки прогонів платформи (TEST — пробні тести, ATTEMPT — повний набір). Нічого не публікувалося.",
+  "runs": [
+    {"language": "C#", "runtime": "Codewars C#", "file": "solution/CodeWars.cs", "run": "TEST",
+     "specs_passed": 4, "specs_failed": 0, "assertions_passed": 4, "assertions_failed": 0, "wall_time_ms": 3379},
+    {"language": "C#", "runtime": "Codewars C#", "file": "solution/CodeWars.cs", "run": "ATTEMPT",
+     "specs_passed": 5, "specs_failed": 0, "assertions_passed": 5, "assertions_failed": 0, "wall_time_ms": 3216},
+    {"language": "Python", "runtime": "Python 3.11", "file": "solution/codewars_solution.py", "run": "TEST",
+     "specs_passed": 4, "specs_failed": 0, "assertions_passed": 4, "assertions_failed": 0, "wall_time_ms": 506},
+    {"language": "Python", "runtime": "Python 3.11", "file": "solution/codewars_solution.py", "run": "ATTEMPT",
+     "specs_passed": 5, "specs_failed": 0, "assertions_passed": 204, "assertions_failed": 0, "wall_time_ms": 687}
+  ]
+}
