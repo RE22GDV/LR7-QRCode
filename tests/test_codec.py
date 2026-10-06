@@ -99,14 +99,26 @@ def test_full_decoder_corrects_eight_damaged_codewords() -> None:
         assert result.text == "Warrior" and set(result.corrected) <= set(words)
 
 
-def test_erasures_recover_sixteen_codewords() -> None:
+@pytest.mark.parametrize("count,readable", [(8, True), (9, True), (14, True), (15, False), (16, False)])
+def test_erasure_limit_with_reserve_three(count: int, readable: bool) -> None:
+    # Понад 8 стирань (половина з 17 перевірних слів) резерв зростає до p = 3:
+    # e ≤ 17 − 3 = 14. До 8 стирань діє p = 1 з таблиці рівня H.
     qr = encode("Warrior", "H", 0)
-    lost = [p for p in layout.DATA_POSITIONS if layout.CODEWORD_OF_MODULE[p] < 16]
+    lost = [p for p in layout.DATA_POSITIONS if layout.CODEWORD_OF_MODULE[p] < count]
     damaged = [row[:] for row in qr.matrix]
     for r, c in lost:
         damaged[r][c] = 0
-    assert try_decode(damaged) is None
-    assert decode(damaged, erasure_modules=lost).text == "Warrior"
+    got = try_decode(damaged, erasure_modules=lost)
+    assert (got == "Warrior") == readable
+    if count > 8:
+        assert try_decode(damaged) is None          # без знання позицій — забагато
+
+
+def test_eight_erasures_leave_room_for_four_errors() -> None:
+    from qrv1.decoder import erasure_reserve
+    assert erasure_reserve(layout.LEVELS["H"], 8) == 1
+    assert erasure_reserve(layout.LEVELS["H"], 9) == 3
+    assert erasure_reserve(layout.LEVELS["L"], 2) == 3
 
 
 def test_kata_scan_ignores_everything_except_length_and_text() -> None:

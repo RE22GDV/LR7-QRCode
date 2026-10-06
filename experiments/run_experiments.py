@@ -469,7 +469,7 @@ def exp_blocks(rng: random.Random, quick: bool) -> dict:
     ax.plot(sides, [r["touched_mean"] for r in rows], "o-", color=S2, ms=4,
             label="зачеплено кодових слів (середнє)")
     ax.axhline(8, color=S1, ls="--", lw=1.4, label="t = 8 помилок")
-    ax.axhline(16, color=S3, ls="--", lw=1.4, label="16 стирань")
+    ax.axhline(14, color=S3, ls="--", lw=1.4, label="14 стирань (p = 3)")
     ax.set_xlabel("сторона плями s, модулів")
     ax.set_ylabel("кодових слів із 26")
     ax.set_title("б) скільки слів зачіпає пляма")

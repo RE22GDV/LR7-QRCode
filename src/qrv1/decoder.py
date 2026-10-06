@@ -128,14 +128,25 @@ def parse_segments(data: list[int], byte_encoding: str = "auto") -> list[tuple[s
     return segments
 
 
+def erasure_reserve(level: layout.Level, erasures: int) -> int:
+    """Резерв p: за таблицею рівня, але не менше 3, коли стирань більше
+    половини перевірних слів."""
+    if 2 * erasures > level.ecc_codewords:
+        return max(level.reserve, 3)
+    return level.reserve
+
+
 def decode(matrix, *, correct: bool = True, erasure_modules=(), reserve: bool = True,
            byte_encoding: str = "auto") -> DecodeResult:
     """Повне декодування QR версії 1.
 
     ``erasure_modules`` — позиції (рядок, стовпець) модулів, які відомо
     пошкоджені (наприклад, закриті логотипом); вони стають стираннями
-    відповідних кодових слів. ``reserve=False`` дозволяє витратити на
-    виправлення й резервні байти p (поза вимогами стандарту).
+    відповідних кодових слів. Резерв p береться з таблиці рівнів, а якщо
+    стирань більше половини перевірних слів — p = 3 (консервативне
+    правило для стирань; для рівня H це межа 14 стирань без помилок).
+    ``reserve=False`` дозволяє витратити на виправлення й резервні байти
+    (поза вимогами стандарту).
     """
     m = _check(matrix)
     level_name, mask, distance = layout.decode_format(m)
@@ -147,10 +158,10 @@ def decode(matrix, *, correct: bool = True, erasure_modules=(), reserve: bool = 
     if correct:
         erasures = sorted({layout.CODEWORD_OF_MODULE[p] for p in erasure_modules
                            if p in layout.CODEWORD_OF_MODULE})
+        reserved = erasure_reserve(level, len(erasures)) if reserve else 0
         try:
             fixed, corrected = reed_solomon.decode(
-                words, level.ecc_codewords, erasures,
-                reserve=level.reserve if reserve else 0)
+                words, level.ecc_codewords, erasures, reserve=reserved)
         except reed_solomon.RSDecodeError as exc:
             raise QRDecodeError(f"корекція не вдалася: {exc}") from exc
     else:
