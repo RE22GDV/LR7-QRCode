@@ -140,7 +140,7 @@ $$
 <a id="formula-4"></a>
 
 $$
-E(x) = D(x)\,x^{\,n-k} \bmod g(x), \qquad C(x) = D(x)\,x^{\,n-k} + E(x) \qquad\text{(4)}
+E(x) = D(x)\thinspace x^{n-k} \bmod g(x), \qquad C(x) = D(x)\thinspace x^{n-k} + E(x) \qquad\text{(4)}
 $$
 
 Для версії 1 `n = 26`. Приймач обчислює синдроми — значення прийнятого
@@ -159,7 +159,7 @@ $$
 <a id="formula-6"></a>
 
 $$
-e_l = \frac{X_l\,\Omega\!\left(X_l^{-1}\right)}{\Lambda'\!\left(X_l^{-1}\right)}, \qquad \Omega(x) = S(x)\,\Lambda(x) \bmod x^{\,n-k} \qquad\text{(6)}
+e_l = \frac{X_l\thinspace \Omega\left(X_l^{-1}\right)}{\Lambda'\left(X_l^{-1}\right)}, \qquad \Omega(x) = S(x)\thinspace \Lambda(x) \bmod x^{n-k} \qquad\text{(6)}
 $$
 
 де `X_l = α^(n−1−pos)` — локатор помилки на позиції `pos`. Код
@@ -541,7 +541,7 @@ $$
 <a id="formula-10"></a>
 
 $$
-P_{\text{хиб}} \approx \sum_{i=0}^{t} \binom{n}{i}\, 255^{\,i} \Big/ 256^{\,n-k} \qquad\text{(10)}
+P_{\text{хиб}} \approx \sum_{i=0}^{t} \binom{n}{i}\thinspace  255^{i} \Big/ 256^{n-k} \qquad\text{(10)}
 $$
 
 Для рівня H це `3,2 · 10⁻¹⁶`. Ця оцінка стосується рівномірно випадкових
@@ -583,7 +583,7 @@ $$
 <a id="formula-11"></a>
 
 $$
-r_{\min} = d\!\left(c, c'\right) - t = 18 - 8 = 10 \qquad\text{(11)}
+r_{\min} = d\left(c, c'\right) - t = 18 - 8 = 10 \qquad\text{(11)}
 $$
 
 Після цього прийняте слово на відстані 8 від підробки й 10 від оригіналу.
