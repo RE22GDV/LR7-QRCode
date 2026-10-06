@@ -1629,47 +1629,55 @@
     "codewars": [
       {
         "language": "C#",
-        "runtime": "Codewars C#",
+        "runtime": "C# 12.0",
         "file": "solution/CodeWars.cs",
         "run": "TEST",
+        "screenshot": "docs/figures/proof_cs_tests.png",
         "specs_passed": 4,
         "specs_failed": 0,
         "assertions_passed": 4,
         "assertions_failed": 0,
-        "wall_time_ms": 3379
+        "wall_time_ms": 2889,
+        "tests_ms": 16.497
       },
       {
         "language": "C#",
-        "runtime": "Codewars C#",
+        "runtime": "C# 12.0",
         "file": "solution/CodeWars.cs",
         "run": "ATTEMPT",
+        "screenshot": "docs/figures/proof_cs_attempt.png",
         "specs_passed": 5,
         "specs_failed": 0,
         "assertions_passed": 5,
         "assertions_failed": 0,
-        "wall_time_ms": 3216
+        "wall_time_ms": 3344,
+        "tests_ms": 44.944
       },
       {
         "language": "Python",
         "runtime": "Python 3.11",
         "file": "solution/codewars_solution.py",
         "run": "TEST",
+        "screenshot": "docs/figures/proof_py_tests.png",
         "specs_passed": 4,
         "specs_failed": 0,
         "assertions_passed": 4,
         "assertions_failed": 0,
-        "wall_time_ms": 506
+        "wall_time_ms": 319,
+        "tests_ms": 1.62
       },
       {
         "language": "Python",
         "runtime": "Python 3.11",
         "file": "solution/codewars_solution.py",
         "run": "ATTEMPT",
+        "screenshot": "docs/figures/proof_py_attempt.png",
         "specs_passed": 5,
         "specs_failed": 0,
         "assertions_passed": 204,
         "assertions_failed": 0,
-        "wall_time_ms": 687
+        "wall_time_ms": 482,
+        "tests_ms": 156.49
       }
     ],
     "machine": {
